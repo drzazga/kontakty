@@ -1,4 +1,6 @@
 class ContactsController < ApplicationController
+  before_filter :recently_contacts, :only => [:index, :show, :edit]
+
   # GET /contacts
   # GET /contacts.xml
   def index
@@ -24,6 +26,7 @@ class ContactsController < ApplicationController
   # GET /contacts/new
   # GET /contacts/new.xml
   def new
+    @address = Address.new
     @contact = Contact.new
 
     respond_to do |format|
@@ -82,4 +85,9 @@ class ContactsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  private
+    def recently_contacts
+      @last_updated_contacts = Contact.all.sort() { |x,y| y.updated_at <=> x.updated_at }[0..5]
+    end
 end

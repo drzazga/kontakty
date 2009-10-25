@@ -16,7 +16,7 @@
     <%= f.text_field :email %>
   </p>
   <p>
-    <%= f.label :gg %><br />
+    <%= f.label :gg, "Gadu-gadu" %><br />
     <%= f.text_field :gg %>
   </p>
   <p>
@@ -27,21 +27,38 @@
     <%= f.label :phone %><br />
     <%= f.text_field :phone %>
   </p>
-  <p>
-    <%= f.label :city %><br />
-    <%= f.text_field :city %>
-  </p>
-  <p>
-    <%= f.label :street %><br />
-    <%= f.text_field :street %>
-  </p>
-  <p>
-    <%= f.label :post_code %><br />
-    <%= f.text_field :post_code %>
-  </p>
+
   <p>
     <%= f.submit 'Create' %>
   </p>
 <% end %>
 
-<%= link_to 'Back', contacts_path %>
+
+<% form_tag('#') do %>
+  <p>
+    <%= label :address,"street","Street" %><br />
+    <%= street_field :address, "street" %>    
+  </p>
+  <p>
+    <%= label :address,"locality","Locality" %><br />
+    <%= locality_field :address, "locality" %>  
+  </p>
+  <p>
+    <%= label :address,"city","City" %><br />
+    <%= city_field :address, "city" %>  
+  </p>   
+  <p>
+    <%= label :address,"state","State" -%><br />
+    <%= state_field :address, "state" %>      
+  </p>   
+  <p>
+    <%= label :address,"country","Country Name" -%><br />
+    <%= country_name_field :address, "country" %>
+  </p>  
+  <p>
+    <%= label :address,"zip","Postal Code" -%><br />
+    <%= postal_code_field :address, "zip" %>
+  </p> 
+    
+<% end %> 
+

@@ -1,3 +1,7 @@
+<% content_for :last do%>
+  <%= render :partial => '/layouts/last' %>
+<% end %> 
+
 <h1>Editing contact</h1>
 
 <% form_for(@contact) do |f| %>
@@ -16,7 +20,7 @@
     <%= f.text_field :email %>
   </p>
   <p>
-    <%= f.label :gg %><br />
+    <%= f.label :gg, "Gadu-gadu" %><br />
     <%= f.text_field :gg %>
   </p>
   <p>
@@ -28,21 +32,11 @@
     <%= f.text_field :phone %>
   </p>
   <p>
-    <%= f.label :city %><br />
-    <%= f.text_field :city %>
-  </p>
-  <p>
-    <%= f.label :street %><br />
-    <%= f.text_field :street %>
-  </p>
-  <p>
-    <%= f.label :post_code %><br />
-    <%= f.text_field :post_code %>
-  </p>
-  <p>
     <%= f.submit 'Update' %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @contact %> |
-<%= link_to 'Back', contacts_path %>
+<%# form_for [@contact, Address.new] do |f| %> 
+<%# end %>
+
+<%= link_to 'Show', @contact %>

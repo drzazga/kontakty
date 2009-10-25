@@ -1,10 +1,10 @@
 <div id="lastUpdated">
-		  <h2 style="margin-top:17px">Recent Entries</h2>
-		  <ul>
-			 <li><a href="#">Recent Entries1</a> <i>01 Des 06</i></li>
-			 <li><a href="#">Recent Entries2</a> <i>01 Des 06</i></li>
-			 <li><a href="#">Recent Entries3</a> <i>01 Des 06</i></li>
-			 <li><a href="#">Recent Entries4</a> <i>01 Des 06</i></li>
-			 <li><a href="#">Recent Entries5</a> <i>01 Des 06</i></li>
-		 </ul>
-		</div>
+<div class="box">
+  <h2 style="margin-top:17px">Last updated</h2>
+	<ul>
+		  <% for contact in @last_updated_contacts %>
+        <li><%= link_to "#{contact.first_name} #{contact.surname}", contact_path(contact.id) %></li>
+      <% end %> 
+	</ul>
+</div>
+</div>

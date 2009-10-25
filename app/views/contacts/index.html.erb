@@ -1,36 +1,22 @@
+<% content_for :last do%>
+  <%= render :partial => '/layouts/last' %>
+<% end %> 
+
 <h1>Listing contacts</h1>
 
-<table>
-  <tr>
-    <th>First name</th>
-    <th>Surname</th>
-    <th>Email</th>
-    <th>Gg</th>
-    <th>Homepage</th>
-    <th>Phone</th>
-    <th>City</th>
-    <th>Street</th>
-    <th>Post code</th>
-  </tr>
-
 <% @contacts.each do |contact| %>
-  <tr>
-    <td><%=h contact.first_name %></td>
-    <td><%=h contact.surname %></td>
-    <td><%=h contact.email %></td>
-    <td><%=h contact.gg %></td>
-    <td><%=h contact.homepage %></td>
-    <td><%=h contact.phone %></td>
-    <td><%=h contact.city %></td>
-    <td><%=h contact.street %></td>
-    <td><%=h contact.post_code %></td>
-    <td><%= link_to 'Show', contact %></td>
-    <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
-    <td><%= link_to 'Destroy', contact, :confirm => 'Are you sure?', :method => :delete %></td>
+  <div id="contact">
+    <p id="contact-gravatar">
+     <%= gravatar_image_tag(contact.email, :gravatar => { :size => 30 }) %> 
+    </p>
+    <p id="contact-link">
+      <%= link_to "#{contact.first_name} #{contact.surname}", contact_path(contact.id) %>  
+    </p>
+    <p id="contact-other-links">
+      <%= link_to 'Edit', edit_contact_path(contact) %>
+      <%= link_to 'Destroy', contact, :confirm => 'Are you sure?', :method => :delete %>      
+    </p>
+    </div>
   </tr>
 <% end %>
-</table>
 
-<br />
-
-<%= link_to 'New contact', new_contact_path %>

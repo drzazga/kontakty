@@ -209,7 +209,7 @@ blockquote{
 
 
 #footer {
-        margin: 40px auto 0 auto;
+  margin: 40px auto 0 auto;
 	text-align: center;
 	border-top: dotted 1px gray;
 	padding: 20px 0 20px 0;
@@ -220,3 +220,37 @@ blockquote{
 	margin: 0px;
 	padding: 0;
 }
+
+#contact {
+  -moz-border-radius: 6px 6px 6px 6px;
+  border: 1px solid #ccc;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+
+#contact-gravatar {
+  float: left;
+  margin: 5px 5px 0 0;
+}
+
+#contact-link {
+  margin: 5px 0 0 5px;
+}
+
+#contact-link a {
+  font-size: 12px;
+  font-weight: bold;
+  color: #111;
+  text-decoration: none;
+}
+
+#contact-link a:hover {
+  text-decoration: underline;
+}
+
+#contact-other-links {
+  clear: both;
+  margin: 0; 
+}
+
