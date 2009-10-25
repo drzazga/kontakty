@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+	
+<!-- ==========================================================	-->
+<!--	Created by Devit Schizoper                          	-->
+<!--	Created HomePages http://LoadFoo.starzonewebhost.com   	-->
+<!--	Created Day 01.12.2006                              	-->
+<!-- ========================================================== -->
+
+<html xml:lang="en" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   <meta content="text/html;charset=utf-8" http-equiv="content-type" />
+	<meta name="author" content="LoadFoO" />
+	<meta name="description" content="Site description" />
+	<meta name="keywords" content="key, words" />
+	<title>LoadFoO [V2]</title>
+	<link href="/stylesheets/style.css" rel="stylesheet" media="screen" type="text/css" />
+	<link href="favicon.ico" rel="shortcut icon" />
+	<script src="/javascripts/textsizer.js" type="text/javascript"></script>
+	<script src="/javascripts/rel.js" type="text/javascript"></script>
+  <%= javascript_include_tag :all %>
+  <%= yield(:head) %>
+</head>
+
+<body>
+<div id="wrap">
+<div id="top">
+<h2><a href="#" title="Back to main page">Drzazga | Kontakty </a></h2>
+
+</div>
+<div id="content">
+
+<div id="left"><%= yield %></div>
+<div id="right">
+ <%= yield(:menu) || render_or_default('menu') %>
+	<div class="box">
+	  <%= yield(:last) || render_or_default('last') %>
+	</div>
+</div>
+<div id="clear"></div></div>
+<div id="footer">
+<p>Copyright 2006 LoadFoO [V1]. Designed by <a href="http://loadfoo.org/" rel="external">LoadFoO</a>. Valid <a href="http://jigsaw.w3.org/css-validator/check/referer" rel="external">CSS</a> &amp; <a href="http://validator.w3.org/check?uri=referer" rel="external">XHTML</a></p>
+</div>
+</div>
+
+</body>
+</html>
