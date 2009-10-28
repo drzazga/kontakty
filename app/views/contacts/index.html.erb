@@ -5,25 +5,28 @@
   <%= render :partial => '/layouts/geo' %>
 <% end %> 
 
-<h1>Listing contacts</h1>
+<% unless current_user %>
+  <h1>You must log in first.</h1>
+<% else %>
+  <h1>Listing contacts</h1>
 
-<% @contacts.each do |contact| %>
-  <div id="contact">
-    <p id="contact-gravatar">
-     <%= gravatar_image_tag(contact.email, :gravatar => { :size => 30 }) %> 
-    </p>
-    <p id="contact-link">
-      <%= link_to "#{contact.first_name} #{contact.surname}", contact_path(contact.id) %>  
-    </p>
-    <p id="contact-other-links">
-      <% if current_user %>
-        <%= link_to 'Edit', edit_contact_path(contact) %>
-        <%= link_to 'Destroy', contact, :confirm => 'Are you sure?', :method => :delete %>      
-      <% end %> 
-    </p>
-    </div>
-  </tr>
-<% end %>
+  <% @contacts.each do |contact| %>
+    <div id="contact">
+      <p id="contact-gravatar">
+       <%= gravatar_image_tag(contact.email, :gravatar => { :size => 30 }) %> 
+      </p>
+      <p id="contact-link">
+        <%= link_to "#{contact.first_name} #{contact.surname}", contact_path(contact.id) %>  
+      </p>
+      <p id="contact-other-links">
+        <% if current_user %>
+          <%= link_to 'Edit', edit_contact_path(contact) %>
+          <%= link_to 'Destroy', contact, :confirm => 'Are you sure?', :method => :delete %>      
+        <% end %> 
+      </p>
+      </div>
+    </tr>
+  <% end %>
 
-<%= will_paginate @contacts %>
-
+  <%= will_paginate @contacts %>
+<% end %> 

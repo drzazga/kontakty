@@ -16,6 +16,18 @@
     <%= f.text_field :surname %>
   </p>
   <p>
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </p>
+  <p>
+    <%= f.label :post_code, "Postal code" %><br />
+    <%= f.text_field :post_code %>
+  </p>
+  <p>
+    <%= f.label :street %><br />
+    <%= f.text_field :street %>
+  </p>
+  <p>
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </p>
@@ -35,8 +47,5 @@
     <%= f.submit 'Update' %>
   </p>
 <% end %>
-
-<%# form_for [@contact, Address.new] do |f| %> 
-<%# end %>
 
 <%= link_to 'Show', @contact %>

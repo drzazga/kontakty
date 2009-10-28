@@ -2,8 +2,10 @@
 <div class="box">
   <h2 style="margin-top:17px">Last updated</h2>
 	<ul>
-		  <% for contact in @last_updated_contacts %>
-        <li><%= link_to "#{contact.first_name} #{contact.surname}", contact_path(contact.id) %></li>
+      <% if current_user %>
+		    <% for contact in @last_updated_contacts %>
+          <li><%= link_to "#{contact.first_name} #{contact.surname}", contact_path(contact.id) %></li>
+        <% end %>   
       <% end %> 
 	</ul>
 </div>

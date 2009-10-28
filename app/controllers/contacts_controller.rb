@@ -1,12 +1,14 @@
 class ContactsController < ApplicationController
-  before_filter :set_var, :only => [:index, :show, :edit, :new]
+  before_filter :set_var, :only => [:index, :show, :edit, :new, :create]
   before_filter :require_user, :only => [:new, :create, :edit, :update, :destroy]
 
   # GET /contacts
   # GET /contacts.xml
   def index
-    @contacts = Contact.paginate :per_page => 5, :page => params[:page], :order => 'updated_at DESC'
-
+    if current_user
+      @user = current_user
+      @contacts = current_user.contacts.paginate :per_page => 5, :page => params[:page], :order => 'updated_at DESC'
+    end
     respond_to do |format|
       format.html # index.html.erb
     end
@@ -25,8 +27,8 @@ class ContactsController < ApplicationController
   # GET /contacts/new
   # GET /contacts/new.xml
   def new
-    @address = Address.new
     @contact = Contact.new
+
     respond_to do |format|
       format.html # new.html.erb
     end
@@ -40,7 +42,9 @@ class ContactsController < ApplicationController
   # POST /contacts
   # POST /contacts.xml
   def create
+    @user = current_user
     @contact = Contact.new(params[:contact])
+    @user.contacts << @contact
 
     respond_to do |format|
       if @contact.save
@@ -80,7 +84,9 @@ class ContactsController < ApplicationController
 
   private
     def set_var
-      @last_updated_contacts = Contact.all.sort() { |x,y| y.updated_at <=> x.updated_at }[0..5]
-      @location = Geokit::Geocoders::MultiGeocoder.geocode('84.10.21.55')#request.remote_ip)
+      if current_user
+        @last_updated_contacts = current_user.contacts.sort() { |x,y| y.updated_at <=> x.updated_at }[0..5]
+      end
+      #@location = Geokit::Geocoders::MultiGeocoder.geocode('84.10.21.55')#request.remote_ip)
     end
 end

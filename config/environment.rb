@@ -42,3 +42,6 @@ Rails::Initializer.run do |config|
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
 end
+
+ENV['RECAPTCHA_PUBLIC_KEY'] = '6LegHAkAAAAAAGRwmA1UixYCAqsn9QqsSKBqJu4o' 
+ENV['RECAPTCHA_PRIVATE_KEY'] = '6LegHAkAAAAAAFYOUO505pZbI0afPICNNDyYLzF6'

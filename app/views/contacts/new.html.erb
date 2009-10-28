@@ -15,6 +15,18 @@
     <%= f.text_field :surname %>
   </p>
   <p>
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </p>
+  <p>
+    <%= f.label :post_code, "Postal code" %><br />
+    <%= f.text_field :post_code %>
+  </p>
+  <p>
+    <%= f.label :street %><br />
+    <%= f.text_field :street %>
+  </p>
+  <p>
     <%= f.label :email %><br />
     <%= f.text_field :email %>
   </p>
@@ -30,32 +42,6 @@
     <%= f.label :phone %><br />
     <%= f.text_field :phone %>
   </p>
-
-<p>
-    <%= label :address,"street","Street" %><br />
-    <%= text_field_tag :address %>    
-  </p>
-  <p>
-    <%= label :address,"locality","Locality" %><br />
-    <%= text_field_tag:address %>  
-  </p>
-  <p>
-    <%= label :address,"city","City" %><br />
-    <%= text_field_tag:address %>  
-  </p>   
-  <p>
-    <%= label :address,"state","State" -%><br />
-    <%= text_field_tag :address %>      
-  </p>   
-  <p>
-    <%= label :address,"country","Country Name" -%><br />
-    <%= text_field_tag :address %>
-  </p>  
-  <p>
-    <%= label :address,"zip","Postal Code" -%><br />
-    <%= text_field_tag :address %>
-  </p> 
-
   <p>
     <%= f.submit 'Create' %>
   </p>

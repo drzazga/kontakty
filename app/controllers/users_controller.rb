@@ -7,12 +7,16 @@ class UsersController < ApplicationController
   end
   
   def create
-    @user = User.new(params[:user])
-    if @user.save
-      flash[:notice] = "Account registered!"
-      redirect_to root_path
+    if verify_recaptcha
+      @user = User.new(params[:user])
+      if @user.save
+        flash[:notice] = "Account registered!"
+        redirect_to root_path
+      else
+        redirect_to new_user_path
+      end
     else
-      render :action => :new
+      redirect_to new_user_path
     end
   end
   
