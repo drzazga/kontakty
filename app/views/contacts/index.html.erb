@@ -1,6 +1,9 @@
 <% content_for :last do%>
   <%= render :partial => '/layouts/last' %>
 <% end %> 
+<% content_for :geo do%>
+  <%= render :partial => '/layouts/geo' %>
+<% end %> 
 
 <h1>Listing contacts</h1>
 
@@ -13,8 +16,10 @@
       <%= link_to "#{contact.first_name} #{contact.surname}", contact_path(contact.id) %>  
     </p>
     <p id="contact-other-links">
-      <%= link_to 'Edit', edit_contact_path(contact) %>
-      <%= link_to 'Destroy', contact, :confirm => 'Are you sure?', :method => :delete %>      
+      <% if current_user %>
+        <%= link_to 'Edit', edit_contact_path(contact) %>
+        <%= link_to 'Destroy', contact, :confirm => 'Are you sure?', :method => :delete %>      
+      <% end %> 
     </p>
     </div>
   </tr>

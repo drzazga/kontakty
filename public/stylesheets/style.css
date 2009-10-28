@@ -139,6 +139,7 @@ blockquote{
 }
 
 #right .box {
+  margin-bottom: 10px;
 	width: 24em;/*280px*/
 	background: #F6F9FB;
 	border: 1px solid #E1E1E1;

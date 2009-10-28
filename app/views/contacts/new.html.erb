@@ -1,3 +1,6 @@
+<% content_for :geo do%>
+  <%= render :partial => '/layouts/geo' %>
+<% end %> 
 <h1>New contact</h1>
 
 <% form_for(@contact) do |f| %>
@@ -28,37 +31,33 @@
     <%= f.text_field :phone %>
   </p>
 
+<p>
+    <%= label :address,"street","Street" %><br />
+    <%= text_field_tag :address %>    
+  </p>
+  <p>
+    <%= label :address,"locality","Locality" %><br />
+    <%= text_field_tag:address %>  
+  </p>
+  <p>
+    <%= label :address,"city","City" %><br />
+    <%= text_field_tag:address %>  
+  </p>   
+  <p>
+    <%= label :address,"state","State" -%><br />
+    <%= text_field_tag :address %>      
+  </p>   
+  <p>
+    <%= label :address,"country","Country Name" -%><br />
+    <%= text_field_tag :address %>
+  </p>  
+  <p>
+    <%= label :address,"zip","Postal Code" -%><br />
+    <%= text_field_tag :address %>
+  </p> 
+
   <p>
     <%= f.submit 'Create' %>
   </p>
 <% end %>
-
-
-<% form_tag('#') do %>
-  <p>
-    <%= label :address,"street","Street" %><br />
-    <%= street_field :address, "street" %>    
-  </p>
-  <p>
-    <%= label :address,"locality","Locality" %><br />
-    <%= locality_field :address, "locality" %>  
-  </p>
-  <p>
-    <%= label :address,"city","City" %><br />
-    <%= city_field :address, "city" %>  
-  </p>   
-  <p>
-    <%= label :address,"state","State" -%><br />
-    <%= state_field :address, "state" %>      
-  </p>   
-  <p>
-    <%= label :address,"country","Country Name" -%><br />
-    <%= country_name_field :address, "country" %>
-  </p>  
-  <p>
-    <%= label :address,"zip","Postal Code" -%><br />
-    <%= postal_code_field :address, "zip" %>
-  </p> 
-    
-<% end %> 
 

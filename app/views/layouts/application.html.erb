@@ -27,12 +27,17 @@
 </div>
 <div id="content">
 
-<div id="left"><%= yield %></div>
+<div id="left">
+  <p style="padding: 0px; margin: 0px; color: green; background-color: #fff"><%= flash[:notice] %></p>
+  <%= yield %>
+</div>
 <div id="right">
  <%= yield(:menu) || render_or_default('menu') %>
 	
- <%= yield(:last) %>
-
+ <% if current_user %>
+   <%= yield(:last) %>
+ <% end %> 
+ <%= yield(:geo) %>
 </div>
 <div id="clear"></div></div>
 <div id="footer">
