@@ -10,6 +10,8 @@ class CreateUserGroups < ActiveRecord::Migration
       t.integer :user_group_id
       t.integer :user_id
     end
+    
+    #Lockdown::System.make_user_administrator(User.find(1))
   end
 
   def self.down

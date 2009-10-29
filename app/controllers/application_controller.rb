@@ -5,7 +5,17 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   filter_parameter_logging :password, :password_confirmation
-  helper_method :current_user_session, :current_user, :require_user, :require_no_user
+     helper_method :current_user_session, :current_user, :require_user, :require_no_user
+
+  protected
+
+  def clear_authlogic_session
+    sess = current_user_session
+    if sess
+      sess.destroy
+      redirect_to login_path and return
+    end
+  end
 
   private
     def current_user_session
@@ -17,22 +27,4 @@ class ApplicationController < ActionController::Base
       return @current_user if defined?(@current_user)
       @current_user = current_user_session && current_user_session.user
     end
-
-    def require_user
-     unless current_user
-       flash[:notice] = "You must be logged in to access this page"
-       redirect_to login_path
-       return false
-     end
-   end
-
-   def require_no_user
-     if current_user
-       flash[:notice] = "You must be logged out to access this page"
-       redirect_to root_url
-       return false
-     end
-   end 
-  # Scrub sensitive parameters from your log
-  # filter_parameter_logging :password
 end

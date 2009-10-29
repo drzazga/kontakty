@@ -33,7 +33,7 @@ Lockdown::System.configure do
   #       options[:session_timeout] = (60 * 60)
   #
   # Call method when timeout occurs (method must be callable by controller):
-  #       options[:session_timeout_method] = :clear_session_values
+        options[:session_timeout_method] = :clear_authlogic_session 
   #
   # Set system to logout if unauthorized access is attempted:
   #       options[:logout_on_access_violation] = false
@@ -88,6 +88,15 @@ Lockdown::System.configure do
     set_permission(:guest).with_controller(:contacts).only_methods(:index).
       and_controller(:users).only_methods(:new, :create).
       and_controller(:user_sessions)
+      
+    set_permission(:user).with_controller(:users)
+    set_permission(:contactowner).with_controller(:contacts).
+      only_methods(:show, :edit, :update, :destroy).
+      to_model(:contact).
+      where(:editor_ids).
+      includes(:current_user_id)
+    set_permission(:contactnew).with_controller(:contacts).
+      only_methods(:new, :create)
   #
   #   set_permission(:some_nice_permission_name).
   #     with_controller(:some_controller_name).
@@ -131,6 +140,10 @@ Lockdown::System.configure do
   #  :category_management and :product_management refer to permission names
   #
   # 
+  
+  set_user_group(:users, :user)
+  set_user_group(:users, :contactowner)
+  set_user_group(:users, :contactnew)
   # Define your user groups here:
 
 end 

@@ -1,6 +1,5 @@
 class ContactsController < ApplicationController
   before_filter :set_var, :only => [:index, :show, :edit, :new, :create]
-  before_filter :require_user, :only => [:new, :create, :edit, :update, :destroy]
 
   # GET /contacts
   # GET /contacts.xml
