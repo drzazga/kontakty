@@ -86,6 +86,6 @@ class ContactsController < ApplicationController
       if current_user
         @last_updated_contacts = current_user.contacts.sort() { |x,y| y.updated_at <=> x.updated_at }[0..5]
       end
-      #@location = Geokit::Geocoders::MultiGeocoder.geocode('84.10.21.55')#request.remote_ip)
+      @location = Geokit::Geocoders::MultiGeocoder.geocode(request.remote_ip)
     end
 end

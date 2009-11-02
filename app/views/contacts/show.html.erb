@@ -1,9 +1,6 @@
 <% content_for :last do%>
   <%= render :partial => '/layouts/last' %>
 <% end %> 
-<% content_for :geo do%>
-  <%= render :partial => '/layouts/geo' %>
-<% end %> 
 <p>
   <%= gravatar_image_tag(@contact.email) %>   
 </p>
