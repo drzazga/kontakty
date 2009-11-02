@@ -1,0 +1,13 @@
+--- 
+javascripts: 
+- base: 
+  - rel
+  - dragdrop
+  - effects
+  - prototype
+  - controls
+  - application
+  - textsizer
+stylesheets: 
+- base: 
+  - style

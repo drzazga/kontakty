@@ -11,10 +11,9 @@
    <meta content="text/html;charset=utf-8" http-equiv="content-type" />
 	<meta name="author" content="LoadFoO" />
 	<title>Drzazga | Kontakty</title>
-	<link href="/stylesheets/style.css" rel="stylesheet" media="screen" type="text/css" />
+	<%= stylesheet_link_merged :base %>
 	<link href="favicon.ico" rel="shortcut icon" />
-	<script src="/javascripts/textsizer.js" type="text/javascript"></script>
-	<script src="/javascripts/rel.js" type="text/javascript"></script>
+	<%= javascript_include_merged :base %>
   <%= javascript_include_tag :all %>
   <%= yield(:head) %>
 </head>
