@@ -27,6 +27,7 @@ class ContactsController < ApplicationController
   # GET /contacts/new.xml
   def new
     @contact = Contact.new
+    @categories = Category.all.inject([]) { |tab, val| tab << [val.name, val.id] }
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,6 +44,7 @@ class ContactsController < ApplicationController
   def create
     @user = current_user
     @contact = Contact.new(params[:contact])
+    @contact.category = Category.find(params[:category_id])
     @user.contacts << @contact
 
     respond_to do |format|
