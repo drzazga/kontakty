@@ -4,7 +4,7 @@
 	<ul>
       <% if current_user %>
 		    <% for contact in @last_updated_contacts %>
-          <li><%= link_to "#{contact.first_name} #{contact.surname}", contact_path(contact.id) %></li>
+          <li><%= link_to h("#{contact.first_name} #{contact.surname}"), contact_path(contact.id) %></li>
         <% end %>   
       <% end %> 
 	</ul>
