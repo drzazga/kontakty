@@ -34,6 +34,7 @@
 	
  <% if current_user %>
    <%= yield(:last) %>
+   <%= yield(:tags) %>
  <% end %> 
  <%= yield(:geo) %>
 </div>

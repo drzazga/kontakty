@@ -12,6 +12,10 @@
   <b>Surname:</b>
   <%=h @contact.surname %>
 </p>
+<p><strong>This event was tagged with</strong>:<br /> <% for tag in @contact.tags %> 
+  <%= link_to tag.name, contacts_path(:tag => tag.name) %>
+<% end %>
+</p>
 <p>
   <b>Category:</b>
   <%=h @contact.category.name %>

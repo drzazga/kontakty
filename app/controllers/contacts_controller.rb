@@ -6,7 +6,12 @@ class ContactsController < ApplicationController
   def index
     if current_user
       @user = current_user
-      @contacts = current_user.contacts.paginate :per_page => 5, :page => params[:page], :order => 'updated_at DESC'
+
+      if params[:tag].nil?
+        @contacts = current_user.contacts.paginate :per_page => 10, :page => params[:page], :order => 'updated_at DESC'
+      else
+        @contacts = current_user.contacts.find_tagged_with(params[:tag]).paginate :per_page => 10, :page => params[:page], :order => 'updated_at DESC'
+      end
     end
     respond_to do |format|
       format.html # index.html.erb
@@ -87,6 +92,7 @@ class ContactsController < ApplicationController
     def set_var
       if current_user
         @last_updated_contacts = current_user.contacts.sort() { |x,y| y.updated_at <=> x.updated_at }[0..5]
+        @tags = current_user.contacts.inject([]) { |tab, c| tab << c.tags }.flatten.uniq 
       end
       @location = Geokit::Geocoders::MultiGeocoder.geocode(request.remote_ip)
     end

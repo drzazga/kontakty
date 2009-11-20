@@ -1,0 +1,13 @@
+<div id="lastUpdated">
+<div class="box">
+  <h2 style="margin-top:17px">Tags</h2>
+	<ul>
+      <% if current_user %>
+		    <% for tag in @tags %>
+          <li><%= link_to tag.name, contacts_path(:tag => tag.name) %> </li>
+        <% end %>
+          
+      <% end %> 
+	</ul>
+</div>
+</div>
