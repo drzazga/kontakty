@@ -19,7 +19,7 @@
        <%= gravatar_image_tag(contact.email, :gravatar => { :size => 30 }) %> 
       </p>
       <p id="contact-link">
-        <%= link_to "#{contact.first_name} #{contact.surname}", contact_path(contact.id) %>  
+        <%= link_to h("#{contact.first_name} #{contact.surname}"), contact_path(contact.id) %>  
       </p>
       <p id="contact-other-links">
         <% if current_user %>
