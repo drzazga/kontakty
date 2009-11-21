@@ -9,11 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD:db/schema.rb
 ActiveRecord::Schema.define(:version => 20091118081829) do
-=======
-ActiveRecord::Schema.define(:version => 20091104074009) do
->>>>>>> ffeb9f554f67eae217bf3a04a369e53c2b70ac26:db/schema.rb
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -34,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20091104074009) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "category_id"
   end
 
   create_table "permissions", :force => true do |t|

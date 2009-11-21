@@ -16,9 +16,9 @@ blockquote{ background: #F7FDE3; color: #606060; padding: 10px}
 #left li {margin-bottom:5px}
 #left {width: 390px; float:left; display: block; margin-left: 20px; display: inline}
  #right {width: 315px; float: right; display:block; margin-top: 10px}
-#right .box {margin-bottom: 10px; width: 24em; background: #F6F9FB; border: 1px solid #E1E1E1; padding:10px 10px 15px 10px; float: right}
+#right .box {margin-bottom: 10px; width: 24em; background: #F6F9FB; border: 1px solid #E1E1E1; padding:0px 10px 15px 10px; float: right}
 #right .box h2 {font-size: 1.1em; margin: 0px 0 0px 0; padding:0px 0 5px 0}
-#right .box a {margin: 10px 0 10px 0; color: #93B300; font-size: 10px}
+#right .box a {margin: 10px 0 10px 0; color: #93B300;}
 #right .box p {margin: 5px 0 10px 0; line-height: 15px}
 #right .box ul {padding: 0 0 7px 20px; margin:10px 0 10px 0}
 #right .box li {margin-top:5px}
@@ -35,3 +35,11 @@ blockquote{ background: #F7FDE3; color: #606060; padding: 10px}
 #contact-link a {font-size: 12px; font-weight: bold; color: #111; text-decoration: none}
 #contact-link a:hover {text-decoration: underline}
 #contact-other-links {clear: both; margin: 0}
+#tags .nube1 {font-size: 0.7em;}
+#tags .nube2 {font-size: 1.0em;}
+#tags .nube3 {font-size: 1.3em;}
+#tags .nube4 {font-size: 1.6em;}
+#tags .nube5 {font-size: 1.9em;}
+#tags .nube6 {font-size: 2.2em;}
+
+

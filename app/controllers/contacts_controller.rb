@@ -92,7 +92,7 @@ class ContactsController < ApplicationController
     def set_var
       if current_user
         @last_updated_contacts = current_user.contacts.sort() { |x,y| y.updated_at <=> x.updated_at }[0..5]
-        @tags = current_user.contacts.inject([]) { |tab, c| tab << c.tags }.flatten.uniq 
+        @tags = Tag.tags(:limit => 10, :order => "name desc", :user => current_user.id)
       end
       @location = Geokit::Geocoders::MultiGeocoder.geocode(request.remote_ip)
     end

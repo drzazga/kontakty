@@ -7,6 +7,23 @@ class Tag < ActiveRecord::Base
   cattr_accessor :destroy_unused
   self.destroy_unused = false
   
+  def self.tags(options = {})
+    query = "select tags.id, name, count(*) as count"
+    query << " from taggings, tags"
+    query << " where tags.id = tag_id"
+    query << " group by tag_id"
+    query << " order by #{options[:order]}" if options[:order] != nil
+    query << " limit #{options[:limit]}" if options[:limit] != nil
+    tags = Tag.find_by_sql(query)
+    
+    user_tags = User.find(options[:user]).contacts.inject([]) { |tab, c| tab << c.tags.each { |t| t[name] }}.flatten.uniq { |t1| t1[id] }
+      
+    tags.delete_if() { |t| !user_tags.any? { |ut| ut[id] == t[id] } }   
+        
+    tags.shuffle!
+  end 
+
+  
   # LIKE is used for cross-database case-insensitivity
   def self.find_or_create_with_like_by_name(name)
     find(:first, :conditions => ["name LIKE ?", name]) || create(:name => name)
